@@ -10,10 +10,22 @@
 
 // Execute 'rustlings hint generics3' for hints!
 
-// I AM NOT DONE
+pub enum Grade {
+    Number(f32),
+    Letter(String)
+}
 
+impl std::fmt::Display for Grade {
+    fn fmt(&self, f: &mut std::fmt::Formatter) -> std::fmt::Result {
+        // Customize so only `x` and `y` are denoted.
+        match self {
+            Grade::Number(n) => write!(f, "{}", n),
+            Grade::Letter(s) => write!(f, "{}", s)
+        }
+    }
+}
 pub struct ReportCard {
-    pub grade: f32,
+    pub grade: Grade,
     pub student_name: String,
     pub student_age: u8,
 }
@@ -32,7 +44,7 @@ mod tests {
     #[test]
     fn generate_numeric_report_card() {
         let report_card = ReportCard {
-            grade: 2.1,
+            grade: Grade::Number(2.1),
             student_name: "Tom Wriggle".to_string(),
             student_age: 12,
         };
@@ -46,7 +58,7 @@ mod tests {
     fn generate_alphabetic_report_card() {
         // TODO: Make sure to change the grade here after you finish the exercise.
         let report_card = ReportCard {
-            grade: 2.1,
+            grade: Grade::Letter("A+".to_string()),
             student_name: "Gary Plotter".to_string(),
             student_age: 11,
         };
