@@ -4,6 +4,12 @@
 
 // I AM NOT DONE
 
+impl<T: ?Sized> AsRef<T> for T {
+    fn as_ref(&self) -> &T {
+        self
+    }
+}
+
 // Obtain the number of bytes (not characters) in the given argument
 // Add the AsRef trait appropriately as a trait bound
 fn byte_counter<T>(arg: T) -> usize {
